@@ -54,6 +54,28 @@ Your RL agent earns **rewards** based on performance:
 
 ---
 
+## 🛠 Implementation Tasks
+
+To successfully participate, complete the following key components:
+
+### 1️⃣ Implement the Training Loop (`train.py`)
+- Load the **Angry Birds RL environment**.
+- Initialize the **RL agent**.
+- Implement the **training loop** where the agent:
+  - Selects actions based on its policy.
+  - Interacts with the environment.
+  - Collects rewards and updates its model.
+- Save the trained model for evaluation.
+
+### 2️⃣ Complete the Reward Function (`AngryBirdsEnv`)
+- Ensure rewards follow the scoring system outlined above.
+- Implement logic for:
+  - **Positive rewards** for hitting the pig.
+  - **Penalty for going out of bounds**.
+  - **Reward shaping** to encourage better trajectories.
+
+--- 
+
 Good luck to all the participants!
 
 
