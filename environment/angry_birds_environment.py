@@ -20,9 +20,9 @@ class AngryBirdsEnv(gym.Env):
         self.pig = Pig(600, 320)
 
         self.observation_space = spaces.Box(
-            low=np.array([0, 0, -30, -30, 0, 0, 0, 0, 0, -np.pi], dtype=np.float32),
-            high=np.array([WIDTH, HEIGHT, 30, 30, WIDTH, HEIGHT, WIDTH, HEIGHT, HEIGHT, np.pi], dtype=np.float32),
-            dtype=np.float32
+        low=np.array([0, 0, -30, -30, 0, 0, 0, -np.pi], dtype=np.float32),
+        high=np.array([WIDTH, HEIGHT, 30, 30, WIDTH, HEIGHT, HEIGHT, np.pi], dtype=np.float32),
+        dtype=np.float32
         )
 
         self.action_space = spaces.Box(
