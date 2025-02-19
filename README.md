@@ -1,4 +1,4 @@
-# Credenz'25 Xodia - Reinforcement Learning Competition
+# Credenz'25 Xodia - Angry Birds RL Competition
 
 Welcome to the **Angry Birds RL Competition!** 🎯🐦  
 This competition challenges participants to develop **Reinforcement Learning (RL) agents** that can efficiently launch birds to hit pigs using a physics-based environment.
