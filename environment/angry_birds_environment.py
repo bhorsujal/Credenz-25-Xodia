@@ -61,8 +61,6 @@ class AngryBirdsEnv(gym.Env):
             self.bird.velocity[1],
             self.pig.x,
             self.pig.y,
-            dx,
-            dy,
             self.bird.max_height,
             self.bird.launch_angle
         ], dtype=np.float32)
