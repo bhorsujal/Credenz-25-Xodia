@@ -70,6 +70,47 @@ class AngryBirdsEnv(gym.Env):
         done = False
 
         # YOUR REWARD LOGIC GOES HERE
+        current_distance = np.sqrt((self.bird.x - self.pig.x)**2 + (self.bird.y - self.pig.y)**2)
+
+        if current_distance < self.min_distance:
+            improvement = self.min_distance - current_distance
+            reward += 2.0 * improvement
+            self.min_distance = current_distance
+
+        if current_distance < 25:
+            reward += 500  # Increased bonus for hitting the pig
+            bonus_steps = max(0, (self.max_steps - self.current_step) / 10.0)
+            reward += bonus_steps
+            done = True
+
+        if current_distance < 15:
+            reward += 100
+
+        if self.bird.x < 0 or self.bird.x > WIDTH or self.bird.y > HEIGHT: # out of bounds
+            reward -= 10
+            done = True
+
+        reward -= 0.2
+
+        if self.bird.max_height > 350: # good trajectory
+            reward += 15
+            if self.bird.max_height > 400:
+                reward += 10
+
+        # Reward for angle 45
+        if abs(self.bird.launch_angle - 0.785) < 0.2:
+            reward += 7
+
+        import math
+        desired_angle = math.atan2(self.pig.y - self.bird.y, self.pig.x - self.bird.x)
+        current_flight_angle = math.atan2(-self.bird.velocity[1], self.bird.velocity[0])
+        if abs(current_flight_angle - desired_angle) < 0.15:
+            reward += 7
+
+        if self.current_step >= self.max_steps:
+            done = True
+            if current_distance >= 25:
+                reward -= current_distance / 5.0
 
         return reward, done
 
